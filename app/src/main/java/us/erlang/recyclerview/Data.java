@@ -11,6 +11,25 @@ public class Data {
     private String title;
     private String description;
     private int number;
+    private String avatar;
+
+    public Data(int type, String title, String description, int number, String avatar) {
+        this.type = type;
+        this.title = title;
+        this.description = description;
+        this.number = number;
+        this.avatar = avatar;
+    }
+
+    public static List<Data> createDataSet(int count) {
+        List<Data> list = new ArrayList<Data>();
+        list.add(new Data(TYPE_HEADER, "This is header", "", 0, ""));
+        for (int i = 1; i < count; i++) {
+            list.add(new Data(TYPE_ITEM, String.format("Title%d", i), String.format("Description %d", i), i, String.format("https://loremflickr.com/180/180?lock=%d", i)));
+        }
+
+        return list;
+    }
 
     public String getTitle() {
         return title;
@@ -24,21 +43,8 @@ public class Data {
         return number;
     }
 
-    public Data(int type, String title, String description, int number) {
-        this.type = type;
-        this.title = title;
-        this.description = description;
-        this.number = number;
-    }
-
-    public static List<Data> createDataSet(int count) {
-        List<Data> list = new ArrayList<Data>();
-        list.add(new Data(TYPE_HEADER, "This is header", "", 0));
-        for (int i = 1; i < count; i++) {
-            list.add(new Data(TYPE_ITEM, String.format("Title%d", i), String.format("Description %d", i), i));
-        }
-
-        return list;
+    public String getAvatar() {
+        return avatar;
     }
 
     public int getType() {
